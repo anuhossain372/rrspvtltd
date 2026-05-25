@@ -6,12 +6,10 @@
   <meta name="description" content="Rabeya Real Estate PVT Ltd — Luxury residential developments in the heart of Dhaka." />
   <title>Rabeya Real Estate PVT Ltd — Architectural Distinction</title>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- Uploadcare Blocks -->
   <script type="module" src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.50.6/web/lr-file-uploader-regular.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.50.6/web/lr-file-uploader-regular.min.css" />
 
@@ -19,9 +17,6 @@
 </head>
 <body>
 
-  <!-- ══════════════════════════════════════════
-       NAVIGATION
-  ══════════════════════════════════════════ -->
   <nav class="nav" id="nav" aria-label="Primary navigation">
     <div class="nav__inner">
       <a href="#" class="nav__brand" aria-label="Rabeya Real Estate home">
@@ -47,7 +42,6 @@
       </button>
     </div>
 
-    <!-- Mobile menu -->
     <div class="nav__mobile" id="navMobile" aria-hidden="true">
       <ul class="nav__mobile-links" role="list">
         <li><a href="#about" class="nav__mobile-link">Vision</a></li>
@@ -58,9 +52,6 @@
     </div>
   </nav>
 
-  <!-- ══════════════════════════════════════════
-       SECTION 1 — HERO
-  ══════════════════════════════════════════ -->
   <section class="hero" id="hero" aria-label="Hero">
     <div class="hero__bg" id="heroBg">
       <img
@@ -89,7 +80,6 @@
       </div>
     </div>
 
-    <!-- Scroll indicator -->
     <div class="hero__scroll" aria-hidden="true">
       <span class="hero__scroll-label">Scroll</span>
       <div class="hero__scroll-track">
@@ -97,17 +87,12 @@
       </div>
     </div>
 
-    <!-- Bottom edge rule -->
     <div class="hero__edge" aria-hidden="true"></div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       SECTION 2 — ABOUT / FEATURES
-  ══════════════════════════════════════════ -->
   <section class="about" id="about" aria-label="About Rabeya Real Estate">
     <div class="about__container">
 
-      <!-- Left column — Editorial typography -->
       <div class="about__editorial" data-reveal>
         <p class="section-eyebrow">Architectural Ethos</p>
         <h2 class="about__headline">
@@ -153,7 +138,6 @@
         </ul>
       </div>
 
-      <!-- Right column — Image composition -->
       <div class="about__imagery" data-reveal>
         <div class="about__img-primary-wrap">
           <div class="about__img-aspect">
@@ -187,7 +171,6 @@
 
     </div>
 
-    <!-- Stats bar -->
     <div class="about__stats" data-reveal>
       <div class="about__stat">
         <span class="about__stat-num" data-count="48">0</span>
@@ -211,9 +194,6 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       SECTION 3 — GALLERY
-  ══════════════════════════════════════════ -->
   <section class="gallery" id="gallery" aria-label="Property gallery">
     <div class="gallery__header" data-reveal>
       <p class="section-eyebrow">Curated Spaces</p>
@@ -222,7 +202,6 @@
 
     <div class="gallery__grid" data-reveal>
 
-      <!-- Large feature tile -->
       <article class="gallery__tile gallery__tile--large" tabindex="0" aria-label="Amenity spaces">
         <div class="gallery__tile-img-wrap">
           <img
@@ -245,7 +224,6 @@
         </div>
       </article>
 
-      <!-- Right column — two stacked tiles -->
       <div class="gallery__col-right">
 
         <article class="gallery__tile gallery__tile--tall" tabindex="0" aria-label="Floor plans">
@@ -286,9 +264,6 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       SECTION 4 — CONTACT FORM
-  ══════════════════════════════════════════ -->
   <section class="contact" id="contact" aria-label="Inquiry form">
     <div class="contact__bg" aria-hidden="true"></div>
 
@@ -310,7 +285,6 @@
          </div>
       </div>
 
-      <!-- Form card -->
       <div class="contact__card" data-reveal>
         <form
           class="contact__form"
@@ -318,13 +292,12 @@
           novalidate
           aria-label="Inquiry form"
         >
-          <!-- Web3Forms access key -->
           <input type="hidden" name="access_key" value="59744022-1457-4cc3-bac4-718269906e50" />
           <input type="hidden" name="subject" value="New Inquiry — Rabeya Real Estate" />
           <input type="hidden" name="from_name" value="Rabeya Real Estate Website" />
-          <!-- File URL from Uploadcare -->
+          
           <input type="hidden" name="file_url" id="fileUrlInput" />
-          <!-- Honeypot anti-spam -->
+          
           <input type="text" name="botcheck" class="contact__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="contact__form-grid">
@@ -405,7 +378,6 @@
             ></textarea>
           </div>
 
-          <!-- Uploadcare File Uploader -->
           <div class="contact__field">
             <label class="contact__label">Supporting Documents <span class="contact__label-opt">(Optional)</span></label>
             <div class="contact__upload-wrap">
@@ -413,6 +385,7 @@
                 css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.50.6/web/lr-file-uploader-regular.min.css"
                 ctx-name="my-uploader"
                 class="contact__uploader"
+                pubkey="1d5136bdbb1b63814fe7"
               ></lr-file-uploader-regular>
               <lr-upload-ctx-provider ctx-name="my-uploader" id="uploaderCtx"></lr-upload-ctx-provider>
               <p class="contact__upload-hint">Attach floor plans, briefs, or reference images.</p>
@@ -430,7 +403,6 @@
           </p>
         </form>
 
-        <!-- Success state -->
         <div class="contact__success" id="contactSuccess" aria-live="polite" aria-atomic="true">
           <div class="contact__success-inner">
             <div class="contact__success-icon" aria-hidden="true">
@@ -452,9 +424,6 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       FOOTER
-  ══════════════════════════════════════════ -->
   <footer class="footer" role="contentinfo">
     <div class="footer__inner">
       <div class="footer__brand">
