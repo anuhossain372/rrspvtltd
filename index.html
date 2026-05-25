@@ -11,7 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <script type="module" src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.50.6/web/lr-file-uploader-regular.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.50.6/web/lr-file-uploader-regular.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@v1/web/uc-file-uploader-regular.min.css" />
+  <script type="module">
+    import * as UC from 'https://cdn.jsdelivr.net/npm/@uploadcare/file-uploader@v1/web/file-uploader.min.js';
+    UC.defineComponents(UC);
+  </script>
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -174,17 +178,17 @@
     <div class="about__stats" data-reveal>
       <div class="about__stat">
         <span class="about__stat-num" data-count="48">0</span>
-        <span class="about__stat-label">Properties Delivered</span>
+        <span class="about__stat-label">Bespoke Developments</span>
       </div>
       <div class="about__stat-divider" aria-hidden="true"></div>
       <div class="about__stat">
         <span class="about__stat-num" data-count="12">0</span>
-        <span class="about__stat-label">Prestigious Awards</span>
+        <span class="about__stat-label">Active Communities</span>
       </div>
       <div class="about__stat-divider" aria-hidden="true"></div>
       <div class="about__stat">
         <span class="about__stat-num" data-count="1200">0</span>
-        <span class="about__stat-label">Families Housed</span>
+        <span class="about__stat-label">Client Consultations</span>
       </div>
       <div class="about__stat-divider" aria-hidden="true"></div>
       <div class="about__stat">
@@ -381,15 +385,14 @@
           <div class="contact__field">
             <label class="contact__label">Supporting Documents <span class="contact__label-opt">(Optional)</span></label>
             <div class="contact__upload-wrap">
-              <lr-file-uploader-regular
-                css-src="https://cdn.jsdelivr.net/npm/@uploadcare/blocks@0.50.6/web/lr-file-uploader-regular.min.css"
-                ctx-name="my-uploader"
-                class="contact__uploader"
-                pubkey="1d5136bdbb1b63814fe7"
-              ></lr-file-uploader-regular>
-              <lr-upload-ctx-provider ctx-name="my-uploader" id="uploaderCtx"></lr-upload-ctx-provider>
-              <p class="contact__upload-hint">Attach floor plans, briefs, or reference images.</p>
-            </div>
+          <uc-config ctx-name="my-uploader" pubkey="1d5136bdbb1b63814fe7"></uc-config>
+          <uc-file-uploader-regular
+            ctx-name="my-uploader"
+            class="contact__uploader"
+          ></uc-file-uploader-regular>
+          <uc-upload-ctx-provider ctx-name="my-uploader" id="uploaderCtx"></uc-upload-ctx-provider>
+          <p class="contact__upload-hint">Attach floor plans, briefs, or reference images.</p>
+        </div>
           </div>
 
           <button type="submit" class="btn btn--gold btn--submit" id="submitBtn">

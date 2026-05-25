@@ -138,36 +138,25 @@
     counters.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ── UPLOADCARE INTEGRATION ───────────────────────────────── */
+  /* ── UPLOADCARE LOGIC ─────────────────────────────────────── */
   function initUploadcare() {
-    const ctx = document.getElementById('uploaderCtx');
-    if (!ctx) return;
+    // Target the new v1 uc- component
+    const ctx = document.querySelector('uc-upload-ctx-provider');
+    const hiddenInput = document.getElementById('fileUrlInput');
 
-    // Set the public key
-    ctx.setAttribute('pubkey', '1d5136bdbb1b63814fe7');
+    if (!ctx || !hiddenInput) {
+      console.warn("Uploadcare elements not found in the DOM.");
+      return;
+    }
 
-    ctx.addEventListener('file-upload-success', function (e) {
-      const fileUrl = e.detail && e.detail.cdnUrl
-        ? e.detail.cdnUrl
-        : (e.detail && e.detail.fileInfo && e.detail.fileInfo.cdnUrl);
-
-      if (fileUrl) {
-        const hidden = document.getElementById('fileUrlInput');
-        if (hidden) hidden.value = fileUrl;
+    ctx.addEventListener('file-upload-success', function(e) {
+      if (e.detail && e.detail.cdnUrl) {
+        // If they upload multiple files, stack the URLs cleanly
+        const currentVal = hiddenInput.value;
+        hiddenInput.value = currentVal ? currentVal + '\n' + e.detail.cdnUrl : e.detail.cdnUrl;
+        console.log('Attachment secured and ready for transmission:', e.detail.cdnUrl);
       }
     });
-
-    // Fallback: also listen on the uploader element itself
-    const uploader = document.querySelector('lr-file-uploader-regular');
-    if (uploader) {
-      uploader.addEventListener('lr-upload-finish', function (e) {
-        const files = e.detail && e.detail.files;
-        if (files && files.length) {
-          const hidden = document.getElementById('fileUrlInput');
-          if (hidden && files[0].cdnUrl) hidden.value = files[0].cdnUrl;
-        }
-      });
-    }
   }
 
   /* ── CONTACT FORM SUBMISSION ──────────────────────────────── */
@@ -208,6 +197,13 @@
 
       try {
         const data = Object.fromEntries(new FormData(form));
+
+        // Format the hidden file_url into a clean, clickable string within the message body
+        if (data.file_url && data.file_url.trim()) {
+          data.message = (data.message ? data.message + '\n\n' : '')
+            + '--- Attached File(s) ---\n'
+            + data.file_url.trim();
+        }
 
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
